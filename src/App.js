@@ -6,11 +6,13 @@ import Signin from './Pages/Signin';
 import Signup from './Pages/Signup';
 import Offers from './Pages/Offers';
 import ForgotPassword from './Pages/ForgotPassword';
+import Header from './components/Header';
 
 function App() {
   return (
     <div >
       <Router>
+        <Header/>
         <Routes>
           <Route path='/'element={<Home/>}/>
           <Route path='/profile'element={<Profile/>}/>
