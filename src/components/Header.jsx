@@ -11,7 +11,7 @@ const Header = () => {
     }
 
     return (
-        <div className='border-b shadow-md bg-white'>
+        <div className='border-b shadow-md bg-white stickey top-0 z-50'>
             <header className=' flex justify-between items-center px-3 md:max-w-6xl md:mx-auto'>
                 <div>
                     <img className='h-5 cursor-pointer' src="https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg" alt="logo" onClick={() => navigate('/')} />
