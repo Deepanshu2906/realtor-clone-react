@@ -48,10 +48,9 @@ const SignUp = () => {
 
             navigate("/");
             // toast.success("Sign up was successful.")
-
-
         } catch (error) {
             // console.log(error);
+            // to show up notification 
             toast.error("Something went wrong with registration!");
 
         }
