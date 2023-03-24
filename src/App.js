@@ -1,45 +1,47 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home';
-import './App.css';
-import Profile from './Pages/Profile';
-import Signin from './Pages/Signin';
-import SignUp from './Pages/SignUp';
-import Offers from './Pages/Offers';
-import ForgotPassword from './Pages/ForgotPassword';
-import PrivateRoute from './components/PrivateRoute';
-import Header from './components/Header';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import "./App.css";
+import Profile from "./Pages/Profile";
+import Signin from "./Pages/Signin";
+import SignUp from "./Pages/SignUp";
+import Offers from "./Pages/Offers";
+import ForgotPassword from "./Pages/ForgotPassword";
+import PrivateRoute from "./components/PrivateRoute";
+import Header from "./components/Header";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import CreateListing from "./Pages/CreateListing";
 
 function App() {
   return (
-    <div >
+    <div>
       <Router>
-        <Header/>
+        <Header />
         <Routes>
-          <Route path='/'element={<Home/>}/>
-          <Route path='/profile' element={<PrivateRoute />}>
-             {/* use of Outlet    */}
-             <Route path='/profile'element={<Profile/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<PrivateRoute />}>
+            {/* use of Outlet    */}
+            <Route path="/profile" element={<Profile />} />
           </Route>
-          <Route path='/sign-in'element={<Signin/>}/>
-          <Route path='/sign-up'element={<SignUp/>}/>
-          <Route path='/forgot-password'element={<ForgotPassword/>}/>
-          <Route path='/offers'element={<Offers/>}/>
+          <Route path="/sign-in" element={<Signin />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/create-listing" element={<CreateListing />} />
         </Routes>
       </Router>
       <ToastContainer
-    autoClose={5000}
-    hideProgressBar={false}
-    position="bottom-center"
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    theme="dark"
-/>
+        autoClose={5000}
+        hideProgressBar={false}
+        position="bottom-center"
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }
