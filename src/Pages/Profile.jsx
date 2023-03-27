@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
@@ -60,27 +60,32 @@ const Profile = () => {
     }
   }
   useEffect(() => {
-    async function fetchUserListings() {
-      const listingRef = collection(db, "listings");
-      const q = query(
-        listingRef,
-        where("userRef", "==", auth.currentUser.uid),
-        orderBy("timestamp", "desc")
-      );
-      const querySnap = await getDocs(q);
-      let listings = [];
-      querySnap.forEach((doc) => {
-        return listings.push({
-          id: doc.id,
-          data: doc.data(),
+    try {
+      async function fetchUserListings() {
+        const listingRef = collection(db, "listings");
+        const q = query(
+          listingRef,
+          where("userRef", "==", auth.currentUser.uid),
+          orderBy("timestamp", "desc")
+        );
+        const querySnap = await getDocs(q);
+        let listings = [];
+        console.log(querySnap.docs);
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
         });
-      });
-      setListings(listings);
-      console.log("list content :", listings);
-      setLoading(false);
-      // i am  consoling my listing to check
+        setListings(listings);
+        console.log("list content :", listings);
+        setLoading(false);
+        // i am  consoling my listing to check
+      }
+      fetchUserListings();
+    } catch (error) {
+      console.log(error);
     }
-    fetchUserListings();
   }, [auth.currentUser.uid]);
   return (
     <>
@@ -147,7 +152,6 @@ const Profile = () => {
       {/* creting UI for listing */}
 
       <div className="max-w-6xl px-3 mt-6">
-        <h2>hello</h2>
         {!loading && listings.length > 0 && (
           <>
             <h2 className="text-2xl text-center font-semibold"> My Listings</h2>
