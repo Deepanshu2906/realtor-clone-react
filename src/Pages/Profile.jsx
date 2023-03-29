@@ -78,8 +78,8 @@ const Profile = () => {
           });
         });
         setListings(listings);
-        console.log("list content :", listings);
         setLoading(false);
+        console.log("list content :", listings);
         // i am  consoling my listing to check
       }
       fetchUserListings();
