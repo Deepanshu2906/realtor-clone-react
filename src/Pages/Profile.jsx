@@ -6,6 +6,7 @@ import { db } from "../firebase";
 import ListingItem from "../components/ListingItem";
 import {
   collection,
+  deleteDoc,
   doc,
   getDocs,
   orderBy,
@@ -86,6 +87,20 @@ const Profile = () => {
       console.log(error);
     }
   }, [auth.currentUser.uid]);
+  // on Delete a listing item
+  async function onDelete(listingID) {
+    if (window.confirm("Are you sure want to delete ?")) {
+      await deleteDoc(doc(db, "listings", listingID));
+      const updateListings = listings.filter(
+        (listing) => listing.id !== listingID
+      );
+      setListings(updateListings);
+      toast.success("Successfully removed  the listing ");
+    }
+  }
+  function onEdit(listingID) {
+    navigate(`/edit-listing/${listingID}`);
+  }
   return (
     <>
       <section className="max-w-6xl mx-auto">
@@ -160,6 +175,8 @@ const Profile = () => {
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data}
+                  onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 />
               ))}
             </ul>
