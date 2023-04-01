@@ -19,12 +19,16 @@ import {
   FaParking,
   FaChair,
 } from "react-icons/fa";
+import { getAuth } from "firebase/auth";
+import Contact from "../components/Contact";
 
 export const Listing = () => {
-  const [shareLinkCopied, setShareLinkCopied] = useState(false);
+  const auth = getAuth();
   const params = useParams();
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [contactLanlord, setContactLandlord] = useState(false);
+  const [shareLinkCopied, setShareLinkCopied] = useState(false);
   SwiperCore.use([Autoplay, Navigation, Pagination]);
   useEffect(() => {
     async function fecthListing() {
@@ -81,8 +85,8 @@ export const Listing = () => {
         </p>
       )}
       {/* information navigation section */}
-      <div className=" m-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5">
-        <div className=" w-full h-[200px] lg--[400px]">
+      <div className=" m-4 flex flex-col md:flex-row max-w-6xl lg:mx-auto p-4 rounded-lg shadow-lg bg-white lg:space-x-5 ">
+        <div className=" w-full">
           <p className="text-2xl font-bold mb-3 text-blue-900">
             {listing.name} - &#8377;{" "}
             {listing.offer
@@ -94,7 +98,7 @@ export const Listing = () => {
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             {listing.type === "rent" ? " / month" : ""}
           </p>
-          <p className="flex items-center mt-6 mb-3">
+          <p className="flex items-center mt-6 mb-3 font-semibold">
             <FaMapMarkerAlt className="text-green-700 mr-1" />
             {listing.address}
           </p>
@@ -115,7 +119,7 @@ export const Listing = () => {
             Description -
             <span className="font-semibold">{listing.description}</span>
           </p>
-          <ul className="flex gap-6 text-sm font-semibold">
+          <ul className="flex gap-6 text-sm font-semibold sm:space-x-10 items-center mb-6">
             <li className="flex items-center whitespace-nowrap">
               <FaBed className="text-lg mr-1" />
               {+listing.bedrooms > 1 ? `${listing.bedrooms} Beds` : "1 Bed"}
@@ -133,6 +137,23 @@ export const Listing = () => {
               {listing.furnished ? "Furnished" : "Not furnished"}
             </li>
           </ul>
+          {/* lanload contact section */}
+          {listing.userRef !== auth.currentUser?.uid && !contactLanlord && (
+            <div className="">
+              <button
+                className="text-sm uppercase hover:shadow-lg
+              bg-blue-600 p-3 text-white font-medium rounded shadow-md hover:bg-blue-700 focus:bg-blue-700 focus:shadow-lg w-full transition duration-150 ease-in-out"
+                onClick={() => {
+                  setContactLandlord(true);
+                }}
+              >
+                Contact lanlord
+              </button>
+            </div>
+          )}
+          {contactLanlord && (
+            <Contact userRef={listing.userRef} listing={listing} />
+          )}
         </div>
         <div className="bg-blue-300 w-full h-[200px] lg--[400px]z-10 overflow-x-hidden"></div>
       </div>
