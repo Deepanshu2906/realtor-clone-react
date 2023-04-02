@@ -104,7 +104,9 @@ const Profile = () => {
   return (
     <>
       <section className="max-w-6xl mx-auto">
-        <h1 className="text-3xl text-center font-bold mt-6">My Profile</h1>
+        <h1 className="text-3xl text-center font-bold mt-6 text-blue-800">
+          My Profile
+        </h1>
         <div className="w-full md:w-[50%] mt-6 px-3 mx-auto">
           <form action="">
             {/*Name input */}
