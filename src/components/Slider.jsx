@@ -32,7 +32,7 @@ export const Slider = function () {
       });
       setListings(listings);
       setLoading(false);
-      console.log(listings);
+      // console.log(listings);
     }
 
     fetchListings();
