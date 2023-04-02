@@ -73,7 +73,13 @@ export default function EditListing() {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setListing(docSnap.data());
-        setFormData({ ...docSnap.data() });
+        // longitude  and latitude data refilling seperately because deleted earliar while creating
+        const coordinates = docSnap.data().geolocation;
+        setFormData({
+          ...docSnap.data(),
+          longitude: coordinates.lng,
+          latitude: coordinates.lat,
+        });
         setLoading(false);
       } else {
         navigate("/");
@@ -126,7 +132,7 @@ export default function EditListing() {
         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
       geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
 
@@ -138,8 +144,8 @@ export default function EditListing() {
         return;
       }
     } else {
-      geolocation.lat = latitude;
-      geolocation.lng = longitude;
+      geolocation.lat = +latitude;
+      geolocation.lng = +longitude;
     }
 
     async function storeImage(image) {

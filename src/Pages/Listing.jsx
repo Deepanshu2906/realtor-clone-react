@@ -111,7 +111,7 @@ export const Listing = () => {
               {listing.offer ? (
                 <p>
                   &#8377;{+listing.regularPrice - +listing.discountedPrice}
-                  discount
+                  &nbsp;discount
                 </p>
               ) : (
                 "No Discount"
