@@ -108,11 +108,13 @@ export const Listing = () => {
               {listing.type === "rent" ? "Rent" : "Sale"}
             </p>
             <p className="text-white bg-green-800 max-w-[200px] w-full rounded-md text-center p-1 shadow-md font-semibold">
-              {listing.offer && (
+              {listing.offer ? (
                 <p>
-                  &#8377;{+listing.regularPrice - +listing.discountedPrice}{" "}
+                  &#8377;{+listing.regularPrice - +listing.discountedPrice}
                   discount
                 </p>
+              ) : (
+                "No Discount"
               )}
             </p>
           </div>
