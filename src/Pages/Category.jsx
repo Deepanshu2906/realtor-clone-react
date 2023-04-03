@@ -12,7 +12,6 @@ import { toast } from "react-toastify";
 import { db } from "../firebase";
 import Spinner from "../components/Spinner";
 import ListingItem from "../components/ListingItem";
-import { TbDiscount2 } from "react-icons/tb";
 import { useParams } from "react-router";
 
 const Category = () => {
