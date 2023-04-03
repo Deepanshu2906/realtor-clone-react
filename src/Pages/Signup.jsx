@@ -12,7 +12,7 @@ import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const SignUp = () => {
+const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -157,4 +157,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Signup;

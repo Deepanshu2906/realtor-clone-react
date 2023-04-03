@@ -3,7 +3,6 @@ import Home from "./Pages/Home";
 import "./App.css";
 import Profile from "./Pages/Profile";
 import Signin from "./Pages/Signin";
-import SignUp from "./Pages/SignUp";
 import Offers from "./Pages/Offers";
 import ForgotPassword from "./Pages/ForgotPassword";
 import PrivateRoute from "./components/PrivateRoute";
@@ -14,6 +13,7 @@ import CreateListing from "./Pages/CreateListing";
 import EditListing from "./Pages/EditListing";
 import { Listing } from "./Pages/Listing";
 import { Category } from "./Pages/Category";
+import Signup from "./Pages/Signup";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/sign-in" element={<Signin />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-up" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
