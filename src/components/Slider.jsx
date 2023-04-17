@@ -67,7 +67,7 @@ export const Slider = function () {
                   background: `url(${listing.data.imgUrls[0]}) center no-repeat`,
                   backgroundSize: "cover",
                 }}
-                className=" relative w-full h-[300px] overflow-hidden"
+                className=" relative w-full h-[400px] overflow-hidden"
               ></div>
               <p
                 className="absolute text-[#f1faee] left-1 top-3 font-medium

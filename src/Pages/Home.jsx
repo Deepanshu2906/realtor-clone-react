@@ -107,6 +107,16 @@ const Home = () => {
   }, []);
   return (
     <div className="">
+      {/*  animated promo video section  */}
+      <div class="flex items-center justify-center w-full mb-[1.5rem] md:mb-[2.5rem]">
+        <div class="flex sm:w-full md:w-full lg:w-full xl:w-full">
+          <img src="/real.4aca0daf7ee262e322f0.gif" class="w-full" />
+        </div>
+      </div>
+      {/* project img */}
+      <div>
+        <img src="/project-img.jpg" class="w-full mb-[0.5rem] md:mb-[1rem]" />
+      </div>
       <Slider />
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
         {offerListings && offerListings.length > 0 && (
